@@ -1,20 +1,68 @@
-// CayChiMuc_MoccNoi.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
-
-int main()
-{
-    std::cout << "Hello World!\n";
+#include <string>
+using namespace std;
+typedef string DataType;
+struct Node {
+    DataType Data;
+    Node* Left;
+    Node* Right;
+};
+typedef Node* Tree;
+void InitTree(Tree &T) {
+    T = NULL;
+}
+bool EmptyTree(Tree T) {
+    return T == NULL;
+}
+Node* CreateNode(DataType x) {
+    Node* p = new Node;
+    p->Data = x;
+    p->Left = NULL;
+    p->Right = NULL;
+    return p;
+}
+void AddLeft(Node* p, DataType x) {
+    if (p != NULL && p->Left == NULL)
+        p->Left = CreateNode(x);
+}
+void AddRight(Node* p, DataType x) {
+    if (p != NULL && p->Right == NULL)
+        p->Right = CreateNode(x);
+}
+void PreOrder(Tree T) {
+    if (T == NULL) return;
+    cout << T->Data << " ";
+    PreOrder(T->Left);
+    PreOrder(T->Right);
+}
+void InOrder(Tree T) {
+    if (T == NULL) return;
+    InOrder(T->Left);
+    cout << T->Data << " ";
+    InOrder(T->Right);
+}
+void PostOrder(Tree T) {
+    if (T == NULL) return;
+    PostOrder(T->Left);
+    PostOrder(T->Right);
+    cout << T->Data << " ";
+}
+int main() {
+    Tree T;
+    InitTree(T);
+    T = CreateNode("A");
+    AddLeft(T, "A.1");
+    AddRight(T, "A.2");
+    AddLeft(T->Left, "A1.1");
+    AddRight(T->Left, "A1.2");
+    AddLeft(T->Right, "A2.1");
+    AddRight(T->Right, "A2.2");
+    cout << "Duyet truoc (Preorder): ";
+    PreOrder(T);
+    cout << "\nDuyet giua (Inorder): ";
+    InOrder(T);
+    cout << "\nDuyet sau (Postorder): ";
+    PostOrder(T);
+    return 0;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
