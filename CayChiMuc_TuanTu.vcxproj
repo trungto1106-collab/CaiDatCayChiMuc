@@ -24,7 +24,7 @@
     <ProjectGuid>{cefc02be-c982-4002-8d9b-8e20ea511149}</ProjectGuid>
     <RootNamespace>CayChiMucTuanTu</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Cai_dat_cay_chi_muc</ProjectName>
+    <ProjectName>CayChiMuc_TuanTu</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
